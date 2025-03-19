@@ -1,0 +1,5 @@
+curl -X POST "http://localhost:9200/_bulk" -H "Content-Type: application/json" --data-binary @bulk_geonames.json
+
+
+
+curl -X GET "http://localhost:9200/geonames/_search?pretty=true" -H "Content-Type: application/json" -d "{ \"query\": { \"fuzzy\": { \"name\": { \"value\": \"Magog\", \"fuzziness\": 2 } } }, \"_source\": [\"name\",\"asciiname\"], \"fields\": [\"_score\"] }"
